@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+</head>
+<body>
+<script src="/static/jquery-1.12.4.js"></script>
+
+<div id="tpl"></div>
+<script>
+    $(function () {
+        $.ajax({
+            url:"/get_data",
+            type:"GET",
+            success: function (data) {
+                //console.log(data)
+                $("#tpl").append(data)
+            }
+        })
+    })
+</script>
+
+</body>
+</html>
