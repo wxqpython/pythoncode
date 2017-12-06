@@ -1,1 +1,0 @@
-echo $(basename $0)
