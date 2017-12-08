@@ -17,3 +17,7 @@ import string
 # print(string.ascii_uppercase + string.ascii_lowercase+string.digits)
 source = string.ascii_uppercase + string.ascii_lowercase+string.digits
 print("".join(random.sample(source,4)))
+
+
+参考链接：
+http://www.cnblogs.com/alex3714/articles/5161349.html
