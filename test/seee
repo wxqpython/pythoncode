@@ -1,0 +1,58 @@
+{{ request.user  }}  这个变量不需要传入前端，可以直接在前端直接使用 
+AnonymousUser
+wxq
+
+<a href="/logout/">注销<a/> 	
+
+
+auth.lougout(request)   # 底层也是调用request.session.flush()
+return redirect("/login/")
+
+request.user.is_authenticated()
+
+
+
+创建用户
+from django.contrib.auth.models import User
+user = User.objects.create_user（username='',password='',email=''）
+
+
+
+$("#span").html(data)  # span标签赋值
+  
+input框赋值
+$("#ret").val(data)
+
+ajax error_msg
+
+$("#login_error").html(error_msg).css("color","red");    # <>add XX</>  # 写入内容并变红
+
+setTimeout(function (){
+           $("#login_error").html("")                    # <>rm XX</>   # 清空内容
+}，3000)  # 3秒钟后执行函数
+
+contentType: application/x-www--form-urlencode
+
+
+form文件传送时enctype="multipart/form-data" 
+form默认enctype="application/x-www-form-urlencoded"  形如b'user=wxq&pwd=123' 组装数据，
+Django帮我们默认以enctype="application/x-www-form-urlencoded"解开后放在
+request.GET或 request.POST里方便我们取数据。如果是application/json 格式， 双引号字符串 {"user":"wxq","pwd":123}，
+需自行解数据。
+
+
+contentType or enctype 客户端告知服务器如何组装数据来发送，服务器那边就必须以相应编码解开。
+
+
+application/json  双引号字符串 {"user":"wxq","pwd":123}
+
+request.body   报文元数据
+
+application/json 
+data: JSON.stringfy({d})    # 前端以json 格式发数据
+s=request.body.decode("utf8")
+d=json.loads(s)             # 后端以json格式解数据
+d['name']
+
+
+datatype: "JSON",  # 如果后端数据以json格式传过来的，前端需手动JSON.parse()反序列化操作，datatype: "JSON"指明后就自动反序列化了。
