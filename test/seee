@@ -1,4 +1,4 @@
-{{ request.user  }}  这个变量不需要传入前端，可以直接在前端直接使用 
+{{ request.user  }}  这个变量不需要传入前端，当使用Django auth模块时可以直接在前端直接使用 
 AnonymousUser
 wxq
 
