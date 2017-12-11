@@ -18,9 +18,9 @@ user = User.objects.create_user（username='',password='',email=''）
 
 
 
-$("#span").html(data)  # span标签赋值
+$("#span").html(data)  # span标签赋值  <span id="span">spantest</span>
   
-input框赋值
+input框赋值 <p><input id="ret" type="text" name="xx"/></p>
 $("#ret").val(data)
 
 ajax error_msg
@@ -56,3 +56,9 @@ d['name']
 
 
 datatype: "JSON",  # 如果后端数据以json格式传过来的，前端需手动JSON.parse()反序列化操作，datatype: "JSON"指明后就自动反序列化了。
+
+
+
+
+
+
