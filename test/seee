@@ -8,11 +8,11 @@ wxq
 auth.lougout(request)   # 底层也是调用request.session.flush()
 return redirect("/login/")
 
-request.user.is_authenticated()
+request.user.is_authenticated()   # 表明用户有session,能通过验证
 
 
 
-创建用户
+利用Django自带的表创建用户，不能对Django自带的表直接操作，那怎么创建呢，Django提供一个接口，通过auth模块操作User表.
 from django.contrib.auth.models import User
 user = User.objects.create_user（username='',password='',email=''）
 
