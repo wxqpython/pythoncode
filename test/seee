@@ -57,6 +57,17 @@ d['name']
 
 datatype: "JSON",  # 如果后端数据以json格式传过来的，前端需手动JSON.parse()反序列化操作，datatype: "JSON"指明后就自动反序列化了。
 
+要想用图标有很多种方法
+方法一：当我们引入了bootstrap.css时，我们可以用它官网的图标
+https://v3.bootcss.com/components/
+    <span class="glyphicon glyphicon-hand-right"></span> 图标名字即类名就可使用了
+    
+方法二：fontawesome也有很多图标
+需要下载font-awesome文件来引入
+<link rel="stylesheet" href="/static/font-awesome.css"/>
+https://fontawesome.io/icons/  # 每一个图标可点击，点开后能看到引用方法。
+<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
 
 
 
