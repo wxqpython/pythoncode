@@ -1,3 +1,27 @@
+参考： https://www.cnblogs.com/ZAIHUANG/p/6032411.html
+
+基本概念：
+
+html很骨感.
+
+css就是装饰或样式.
+
+js就是让其动起来, js=javascript，Javascript是一门编程语言，我们用它来编写客户端浏览器脚本
+
+jQuery是一个快速、简洁的JavaScript框架,一种javascript工具库，把我们常用的一些功能进行封装，方便我们调用，极大简化了Javascript编程，提高了开发效率。
+jQuery设计的宗旨就是“write Less，Do More”
+
+
+Bootstrap是一个开发框架，集成了很多现成的网页格式和网页布局，封装了很多CSS样式和JS代码
+
+
+Javascipt跟jQuery的区别：
+jQuery是javascript的一个库，包含多个可重用的函数，用来辅助我们简化javascript开发
+jQuery能做的javascipt都能做到，而javascript能做的事情，jQuery不一定能做到。
+
+
+
+
 {{ request.user  }}  这个变量不需要传入前端，当使用Django auth模块时可以直接在前端直接使用 
 AnonymousUser
 wxq
