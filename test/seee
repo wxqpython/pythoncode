@@ -57,6 +57,16 @@ d['name']
 
 datatype: "JSON",  # 如果后端数据以json格式传过来的，前端需手动JSON.parse()反序列化操作，datatype: "JSON"指明后就自动反序列化了。
 
+onload="successBack();" # 一个标签内容有更新时重新加载
+function successBack(){...};
+
+
+form id='ff1'
+<button onclck="change">提交</button>
+function change(){
+    document.getElementById('ff1').submit();
+}
+
 要想用图标有很多种方法
 方法一：当我们引入了bootstrap.css时，我们可以用它官网的图标
 https://v3.bootcss.com/components/
