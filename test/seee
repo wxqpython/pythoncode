@@ -107,4 +107,8 @@ https://fontawesome.io/icons/  # 每一个图标可点击，点开后能看到�
 http://fontawesome.dashgame.com/#basic
 
 
-
+<form>
+   <button>提交</button>    # button标签在form里也会有事件，会提交
+   <input type="submit">   #  有事件，也会提交
+   <input type="button" value="提交">  # 没有事件，不会提交
+</form>
