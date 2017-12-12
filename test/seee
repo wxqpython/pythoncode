@@ -20,6 +20,12 @@ jQuery是javascript的一个库，包含多个可重用的函数，用来辅助�
 jQuery能做的javascipt都能做到，而javascript能做的事情，jQuery不一定能做到。
 
 
+from django.contrib import auth  #
+user=auth.authenticate(usernamme=username,password=username)：
+if user:
+    
+else:
+   error="用户名或密码错误"
 
 
 {{ request.user  }}  这个变量不需要传入前端，当使用Django auth模块时可以直接在前端直接使用 
