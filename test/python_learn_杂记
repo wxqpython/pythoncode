@@ -6,14 +6,6 @@ http://www.cnblogs.com/yuanchenqi/articles/7468816.html
 验证码基码参见random模块：http://www.digmyth.com/2017/02/20/python-05-02-模块
 
 
-
-
-
-
-
-
-
-
 from django.contrib import auth  #
 user=auth.authenticate(usernamme=username,password=username)：
 if user:
@@ -28,12 +20,10 @@ wxq
 
 <a href="/logout/">注销<a/> 	
 
-
 auth.lougout(request)   # 底层也是调用request.session.flush()
 return redirect("/login/")
 
 request.user.is_authenticated()   # 表明用户有session,能通过验证
-
 
 
 利用Django自带的表创建用户，不能对Django自带的表直接操作，那怎么创建呢，Django提供一个接口，通过auth模块操作User表.
@@ -58,31 +48,7 @@ setTimeout(function (){
            $("#login_error").html("")                    # <>rm XX</>   # 清空内容
 }，3000)  # 3秒钟后执行函数
 
-contentType: application/x-www--form-urlencode
 
-
-form文件传送时enctype="multipart/form-data" 
-form默认enctype="application/x-www-form-urlencoded"  形如b'user=wxq&pwd=123' 组装数据，
-Django帮我们默认以enctype="application/x-www-form-urlencoded"解开后放在
-request.GET或 request.POST里方便我们取数据。如果是application/json 格式， 双引号字符串 {"user":"wxq","pwd":123}，
-需自行解数据。
-
-
-contentType or enctype 客户端告知服务器如何组装数据来发送，服务器那边就必须以相应编码解开。
-
-
-application/json  双引号字符串 {"user":"wxq","pwd":123}
-
-request.body   报文元数据
-
-application/json 
-data: JSON.stringfy({d})    # 前端以json 格式发数据
-s=request.body.decode("utf8")
-d=json.loads(s)             # 后端以json格式解数据
-d['name']
-
-
-datatype: "JSON",  # 如果后端数据以json格式传过来的，前端需手动JSON.parse()反序列化操作，datatype: "JSON"指明后就自动反序列化了。
 
 onload="successBack();" # 一个标签内容有更新时重新加载
 function successBack(){...};
@@ -93,7 +59,6 @@ form id='ff1'
 function change(){
     document.getElementById('ff1').submit();
 }
-
 
 
 
