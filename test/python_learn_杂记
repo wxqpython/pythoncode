@@ -56,7 +56,7 @@ request.user.is_authenticated()   # 表明用户有session,能通过验证
 from django.contrib.auth.models import User
 user = User.objects.create_user（username='',password='',email=''）
 当Django自带User表字段不够用时，可以自己建表继承User表字段，方法:
-from ....AbstractUser
+from django.contrib.auth.models import  AbstractUser
 class UserInfo(AbstractUser):
      detail = modoles.CharField(max_length=32)
 
