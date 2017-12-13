@@ -11,32 +11,7 @@ http://www.cnblogs.com/yuanchenqi/articles/7468816.html
 
 
 
-```
-position
-     position: relative  # 与absolute一起使用
-     position: absolute  #随滚动条滚动而滚动
-      随滚动条滚动而滚动，并且一直往上找，直到找到一个relative后进行定位
-     position: fixed     # 永远在窗口某位置
-```
-参考： https://www.cnblogs.com/ZAIHUANG/p/6032411.html
-基本概念：
 
-html很骨感.
-
-css就是装饰或样式.
-
-js就是让其动起来, js=javascript，Javascript是一门编程语言，我们用它来编写客户端浏览器脚本
-
-jQuery是一个快速、简洁的JavaScript框架,一种javascript工具库，把我们常用的一些功能进行封装，方便我们调用，极大简化了Javascript编程，提高了开发效率。
-jQuery设计的宗旨就是“write Less，Do More”
-
-
-Bootstrap是一个开发框架，集成了很多现成的网页格式和网页布局，封装了很多CSS样式和JS代码
-
-
-Javascipt跟jQuery的区别：
-jQuery是javascript的一个库，包含多个可重用的函数，用来辅助我们简化javascript开发
-jQuery能做的javascipt都能做到，而javascript能做的事情，jQuery不一定能做到。
 
 
 from django.contrib import auth  #
@@ -119,24 +94,7 @@ function change(){
     document.getElementById('ff1').submit();
 }
 
-要想用图标有很多种方法
-方法一：当我们引入了bootstrap.css时，我们可以用它官网的图标
-https://v3.bootcss.com/components/
-    <span class="glyphicon glyphicon-hand-right"></span> 图标名字即类名就可使用了
-    
-方法二：fontawesome也有很多图标
-需要下载font-awesome文件来引入
-<link rel="stylesheet" href="/static/font-awesome.css"/>
-https://fontawesome.io/icons/  # 每一个图标可点击，点开后能看到引用方法。
-<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 
 
-方法三：这个也是图标库，方法见官网
-http://fontawesome.dashgame.com/#basic
 
 
-<form>
-   <button>提交</button>    # button标签在form里也会有事件，会提交
-   <input type="submit">   #  有事件，也会提交
-   <input type="button" value="提交">  # 没有事件，不会提交
-</form>
