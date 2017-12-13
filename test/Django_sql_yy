@@ -1,0 +1,25 @@
+http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#manytomany-arguments
+ http://www.cnblogs.com/yuanchenqi/articles/7552333.html
+ 
+ 
+ 一个类对应一张表
+一个类对象对应一行表记录
+一个类属性对应记录字段值
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+    }
+}　
