@@ -23,3 +23,7 @@ LOGGING = {
         },
     }
 }　
+
+
+p=models.UserInfo.objects.create(username='wxq',pwd=123)  # 返回对象本身
+print(p.username,p.pwd)
