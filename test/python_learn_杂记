@@ -9,23 +9,8 @@ Django 认证系统
 http://www.cnblogs.com/yuanchenqi/articles/7609586.html
 from django.contrib import auth  #
 user=auth.authenticate(usernamme=username,password=username)：
-if user:
-    验证通过
-else:
-   error="用户名或密码错误"
-
-
-{{ request.user  }}  这个变量不需要传入前端，当使用Django auth模块时可以直接在前端直接使用 
-AnonymousUser
-wxq
-
-<a href="/logout/">注销<a/> 	
-
-auth.lougout(request)   # 底层也是调用request.session.flush()
-return redirect("/login/")
 
 request.user.is_authenticated()   # 表明用户有session,能通过验证
-
 
 利用Django自带的表创建用户，不能对Django自带的表直接操作，那怎么创建呢，Django提供一个接口，通过auth模块操作User表.
 from django.contrib.auth.models import User
