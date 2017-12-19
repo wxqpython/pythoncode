@@ -46,6 +46,33 @@ function change(){
     document.getElementById('ff1').submit();
 }
 
+## s16_day20
+Django后台学习
+1 不建app的Django项目
+2 命令行创建目录
+python manage.py startapp backend  # 后台
+python manage.py startapp web      # 前端
+前后端共用一个数据库，那么models.py放在哪个文件夹里是个问题？
+其实放在哪里都可以，但前后端不在同一个项目时，需单独放数据库python manage.py startapp repository做到程序解偶，
+或者数据库完全就是单独Django项目，repository APP只提供数据库API即可。
+
+Django Admin基本使用：
+chouti示例models.py
+
+models.Charfield(null=True,blank=True, unique=True)
+null对数据库而言可以为空
+blank对Django表单而言可以为空
+unique对数据库而言表示唯一索引
+
+class Meta:
+unique_togather=(('user_info','news'),)  # 联合唯一索引
+
+
+
+
+
+
+
 
 
 
