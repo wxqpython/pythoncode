@@ -125,4 +125,25 @@ ths.src+="?"
 方法三：
 document.getElementById("valid_img").src+=?
 
+#验证码：
+1 pip3 install Pillow
+2 文件：check_code.py Monaco.ttf 
+3 
+intx = parseInt("1") # 字符转换为整型
+
+
+
+
+
+requests模块使用：
+import requests
+r1 = requests.get("http://127.0.0.1:8008/login/")
+r2=requests.post(url='http://127.0.0.1:8008/login/',
+              data={
+                  "username":"wxq",
+                  'password':"123",
+                  'code':'sdf',
+              })
+
+print(r2.text)
 
