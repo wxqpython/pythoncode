@@ -67,9 +67,31 @@ unique对数据库而言表示唯一索引
 class Meta:
 unique_togather=(('user_info','news'),)  # 联合唯一索引
 
+后台注册：
+admin.py
+from django.contrib import admin
+from repository import  models
 
+admin.site.register(models.UserInfo)     # 用户
+admin.site.register(models.News)         # 新闻
+admin.site.register(models.NewsType)     # 新闻类型
+admin.site.register(models.Comment)      # 评论
+admin.site.register(models.Favor)        # 点赞
+创建超级用户：
+python manage.py createsuperuser
 
+class UserInfo(models.Model):
+    nid = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=32, unique=True,verbose_name="用户名")  # 字段显示中文
+    password = models.CharField(max_length=32)
+    email = models.CharField(max_length=32, unique=True)
+    ctime = models.DateTimeField()
 
+    class Meta:
+        verbose_name_plural="用户表"  # 表名显示中文
+    def __str__(self):
+        return self.username         # 每个对象显示
+    
 
 
 
