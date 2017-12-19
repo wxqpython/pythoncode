@@ -110,8 +110,19 @@ function doFavor(nid){
 }
 
 
+<img class="valid_img" src="/get_valid_img/" alt="" width="200" height="40" onclick="changeImg(this);">
+方法一：
 
+function changeImg(ths){
+ths.src+="?"
+}
+方法二：
 
+    $(".valid_img").click(function () {
+        $(this)[0].src+="?"
+    });
 
+方法三：
+document.getElementById("valid_img").src+=?
 
 
