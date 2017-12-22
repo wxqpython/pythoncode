@@ -196,6 +196,17 @@ process_request  process_view process_exception process_response
  内置信号自动触发
  自定义信号手动触发
  
+ div里面嵌套div时,记得div是块级标签，需要设float
+ 字体的哪种字体用font-family: 微软雅黑
+ awesome图标是基于字体来玩的，所以不会放大缩小而失真，我们需要对这样的图标设置样式时，放大放小用font-size, 颜色用color: red
+ 
+ a 标签内联的，自己是多少就是多少，设高宽是没用的。
+ 样式时a.item，中间没有空格，表示class为item的a标签。
+ 
+ div里面有img标签时
+ <div style="height:20px;width:20px;overflow: hidden">   # 这里表示只有20px,  超过就隐藏
+     <img style="height: 100%;width: 100%;border-radius:50%" src="test.png"/>  #自适应外标签大小，按百分比缩放，并圆形显示.
+ </div>
  
  
 
