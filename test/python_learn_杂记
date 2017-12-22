@@ -204,7 +204,7 @@ process_request  process_view process_exception process_response
  样式时a.item，中间没有空格，表示class为item的a标签。
  
  div里面有img标签时
- <div style="height:20px;width:20px;overflow: hidden">   # 这里表示只有20px,  超过就隐藏
+ <div style="height:20px;width:20px;overflow: hidden">   # 这里表示只有20px,  超过就隐藏,如果按下面的百分比设置后，是没有必要设overflow的
      <img style="height: 100%;width: 100%;border-radius:50%" src="test.png"/>  #自适应外标签大小，按百分比缩放，并圆形显示.
  </div>
  
