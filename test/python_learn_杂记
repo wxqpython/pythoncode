@@ -211,3 +211,7 @@ process_request  process_view process_exception process_response
  
 
 
+user=models.UserInfo.objects.filter(**form.cleaned_data).first()
+user=models.UserInfo.objects.create(**request.POST.dict())
+aggregate()是QuerySet的终止子句.
+
