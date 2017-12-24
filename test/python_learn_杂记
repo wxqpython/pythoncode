@@ -209,9 +209,36 @@ process_request  process_view process_exception process_response
  </div>
  
  
-
-
+form类验证过的数据form.cleaned_data格式为字典，可以直接用于filter
 user=models.UserInfo.objects.filter(**form.cleaned_data).first()
+
+表单直接提交的数据request.POST格式为QueryDict，不能直接用于orm的create()方法，需要.dict()转为字典格式，并且字段个数刚好符合才能成功创建
+如果有如下input
+        <input type="radio" name="gender" value="男" checked="checked">男
+        <input type="radio" name="gender" value="女">女
+        <input type="checkbox" name="hobby" value="11">篮球
+        <input type="checkbox" name="hobby" value="22">足球
+QueryDict例子：
+csrfmiddlewaretoken': ['XqN6uWZfIwfk2xcOkPgYioSokUTdxTYkw6IsIMuX0qUyf0KnRfOgcH2PBgwFXcoY'], 'gender': ['女'], 'hobby': ['11', '22']}>
+
+
 user=models.UserInfo.objects.create(**request.POST.dict())
 aggregate()是QuerySet的终止子句.
+
+1 当前端select多选提交数据[1,2,3]时，获取数据用request.POST.getlist("author_id_list"),request.POST.get只能获得字符串，无法获取例表
+如<QueryDict: { 'title': ['98'], 'pubdate': ['2017-12-15'], 'price': ['7'], 'pub': ['1'], 'author_id_list': ['1', '3']}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
