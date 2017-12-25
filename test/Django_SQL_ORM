@@ -2,6 +2,10 @@ http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#manytomany-a
 http://www.cnblogs.com/yuanchenqi/articles/7552333.html                                     # yuan博客
  
  
+ 	练习题Mysql：
+		http://www.cnblogs.com/wupeiqi/articles/5729934.html
+		http://www.cnblogs.com/wupeiqi/articles/5748496.html
+  
 ######## Django orm sql ##
 models.py
 
