@@ -360,3 +360,53 @@ def FQQuery(request):
     return HttpResponse("OK")
     
     #####
+    在linux操作系统中需要做几件事儿：
+   1 模块 
+    pip3 install pymysql
+    pycharm中可以在应用目录下__init__.py,也可以在项目目录__init__.py下
+    import pymysql
+    pymysql.install_as_MySQLdb()
+    但是linux系统里只能在项目目录下
+    
+    2 models.py的区别
+    在建立一对一或一对多关系表时需要位置参数on_delete=models.CASCADE，多对多不需要
+    author=models.OneToOneField("Author",on_delete=models.CASCADE)
+    publisher=models.ForeignKey(to="Publish",on_delete=models.CASCADE)
+    authors=models.ManyToManyField("Author")
+    
+    3 数据库
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wxq_db',
+        'USER': 'root',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+    
+    4 明确指明INSTALLED_APPS
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app01.apps.App01Config',  
+]
+
+    5 就可以命令行操作orm语句学习了
+    python3 manage.py  shell
+    >>> from app01 import models
+    >>>
+    
+    
+    
+    
+    
+    
+    
+    
