@@ -272,9 +272,14 @@ def query(request):
     # print(ret8)
 
 
+ models.Book.objects.filter(title='python').values('title','publisher__name','authors__authordetail__addr')  # 多个作者就有多条数据
+ <QuerySet [{'title': 'python', 'publisher__name': '人民出版社', 'authors__authordetail__addr': 'shade'}, {'title': 'python', 'publisher__name': '人民出版社', 'authors__authordetail__addr': '上海'}]>
 
 
-
+  models.Book.objects.filter(title="full of linux").values("authors__name")
+  
+>>> models.Author.objects.filter(authordetail__addr__startswith="na").values("book__title",'book__publisher__name','authordetail__addr')
+Out[127]: <QuerySet [{'book__title': 'full of linux', 'authordetail__addr': 'nanshao', 'book__publisher__name': '清华版社'}]>
 
 
 
@@ -293,7 +298,7 @@ def edit(request,id):
 
 
 def juheQuery(reqeuest):
-     from django.db.models import Avg,Count,Sum,Min,Max
+     from django.db.models import F,Q,Avg,Count,Sum,Min,Max
      # 单纯聚合函数
      # 计算所有图书的平均价格
      # ret=models.Book.objects.all().aggregate(priceSum=Sum("price"))
@@ -324,7 +329,12 @@ def juheQuery(reqeuest):
      # print(ret5)
 
 
+实践：
+In [178]: models.Publish.objects.annotate(priceSum=Sum("book__price")).values('name','priceSum')
+Out[178]: <QuerySet [{'priceSum': Decimal('12.00'), 'name': '人民出版社'}, {'priceSum': Decimal('8.80'), 'name': '工业出版社'}, {'priceSum': Decimal('8.80'), 'name': '清华版社'}]>
 
+In [179]: models.Book.objects.values("publisher__name").annotate(priceSum=Sum("price")).values('publisher__name','priceSum')
+Out[179]: <QuerySet [{'publisher__name': '人民出版社', 'priceSum': Decimal('12.00')}, {'publisher__name': '清华版社', 'priceSum': Decimal('8.80')}, {'publisher__name': '工业出版社', 'priceSum': Decimal('8.80')}]>
 
 
      return HttpResponse("OK")
@@ -404,8 +414,26 @@ def FQQuery(request):
     >>>
     
     
-    
-    
+联表操作：
+    MariaDB [wxq_db]> select sum(app01_book.price) as bookSumPrice,app01_publish.name 
+    ->from app01_book_authors
+    ->left join app01_book
+    ->on app01_book.nid=book_id
+    ->left join app01_author
+    ->on author_id=app01_author.id
+    ->left join app01_publish
+    ->on publisher_id=app01_publish.id
+    ->group by app01_publish.name
+    ->having bookSumPrice > 100
+    ->order by bookSumPrice desc;
++--------------+-----------------+
+| bookSumPrice | name            |
++--------------+-----------------+
+|       176.40 | 工业出版社      |
+|       124.00 | 人民出版社      |
++--------------+-----------------+
+2 rows in set (0.00 sec)
+
     
     
     
