@@ -261,10 +261,11 @@ pycharm默认以UTF-8存数据到硬盘(unicode to UTF-8)
 python3默认以UTF-8读数据到内存（UTF-8 to unicode）
 #coding:utf-8 也是指明了用什么编码读数据到内存
 with open("test.txt",'r',encoding='utf8') as f:   #虽然文件是UTF8存的，此时要以utf8读, utf8 to unicode
-    f.read()             
-bytes只接受ASCII码，其它类型都要经过编码为ascii, ascii一律解码为其它类型
-bytes  --> decode() --> 其它
-其它  ---> encode() -->  ascii
+    f.read() 
+python3字符串就是unicode, 任意unicode只要编码后就是bytes
+'你好'.encode('utf8')
+
+
 
 
 
