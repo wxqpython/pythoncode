@@ -257,10 +257,13 @@ if __name__ == '__main__':
     return md5(text)
 
 
-pycharm默认以UTF-8存数据到硬盘(unicode to UTF-8)
-python3默认以UTF-8读数据到内存（UTF-8 to unicode）
-#coding:utf-8 也是指明了用什么编码读数据到内存
-with open("test.txt",'r',encoding='utf8') as f:   #虽然文件是UTF8存的，此时要以utf8读, utf8 to unicode
+编码过程： 任意unicode到bytes的过程
+解码过程： bytes到unicode的过程
+
+pycharm默认以UTF-8存数据到硬盘(unicode to UTF-8)   一个编码过程
+python3默认以UTF-8读数据到内存（UTF-8 to unicode）  一个解码过程
+#coding:utf-8 也是指明了用什么编码读数据到内存,一个解码过程
+with open("test.txt",'r',encoding='utf8') as f:   #虽然文件是UTF8存的，此时要以utf8读, utf8 to unicode， 一个解码过程
     f.read() 
 python3字符串就是unicode, 任意unicode只要编码后就是bytes
 '你好'.encode('utf8')
