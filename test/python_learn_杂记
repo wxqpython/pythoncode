@@ -1,3 +1,11 @@
+字符编码
+编码：　任意unicode到bytes的过程
+解码：  bytes到unicode的过程
+写入是编码，读取是解码
+open('test.txt', 'r',encoding=utf8) 是一个解码的过程
+
+
+
 https://code.ziqiangxuetang.com/django/django-qrcode.html  # python学习网站
 
 http://www.cnblogs.com/wupeiqi/articles/6229292.html   # 线程、进程学习
@@ -175,9 +183,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+在Django中就表现为一个类.
+
 m1.process_exception(self, request, exception):
     print("m1.process_exception1")
-
 
 m1.process_request
 m2.process_request
@@ -238,8 +247,11 @@ aggregate()是QuerySet的终止子句.
 
 form: label="用户名"
 
+
 自定义错误信息加入form.errors
+from django.xx import ValidationError
 form.add_error('password', '用户名或密码错误')  # password为form字段
+form.add_error('password', ValidationError('用户名或密码错误'))  # 推荐用法
 
 #md5 密码加密
 #password=form.cleaned_data['password']
@@ -257,16 +269,12 @@ if __name__ == '__main__':
     return md5(text)
 
 
-编码过程： 任意unicode到bytes的过程
-解码过程： bytes到unicode的过程
 
-pycharm默认以UTF-8存数据到硬盘(unicode to UTF-8)   一个编码过程
-python3默认以UTF-8读数据到内存（UTF-8 to unicode）  一个解码过程
-#coding:utf-8 也是指明了用什么编码读数据到内存,一个解码过程
-with open("test.txt",'r',encoding='utf8') as f:   #虽然文件是UTF8存的，此时要以utf8读, utf8 to unicode， 一个解码过程
-    f.read() 
-python3字符串就是unicode, 任意unicode只要编码后就是bytes
-'你好'.encode('utf8')
+
+
+
+
+
 
 
 
