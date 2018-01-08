@@ -30,8 +30,19 @@ git push -u origin master
         pass
 ```
 2 在一个一个多级目录包下有很多模块时，别人from xx import * (只有from)导入可能找不到模块，这时可以在各个包的__init__.py文件里定义__all__指定包下哪些模块可以导入，有时问题得到解决.
+问题： any.py里找不到c包
 ```
-__all__ = ['md1', 'md2']
+from app01.a.b import *
+
+def func():
+    return  c.c1.AdminSite()
+
+x=func()
+print(x)
+```
+解决：b包目录__init__.py定义__all__
+```
+__all__ = ['c',] # 在这种情况下__all__有着from app01.a.b import c 相同作用
 ```
 
 
