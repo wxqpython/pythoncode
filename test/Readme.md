@@ -18,9 +18,10 @@ git push -u origin master
 ```
 
 
-## from import导入知识
+## python模块导入知识
+* __all__ 只用于from形式导入起限定作用
 
-1 在定义一个模块时如md.py,写入了很多语句或变量,__all__可以限定别人导入模块哪些变量或方法
+1 在定义一个模块时如md.py,写入了很多语句或变量,__all__可以限定别人from导入模块哪些变量或方法
  ```
  __all__ = ['x','func']
     x=1
@@ -28,12 +29,11 @@ git push -u origin master
     def func():
         pass
 ```
-2 在一个包下有很多模块，别人导入时找不到模块时，可以在该包的__init__.py文件里定义__all__指定包下哪些模块可以导入
+2 在一个一个多级目录包下有很多模块时，别人from(只有from)导入可能找不到模块，这时可以在各个包的__init__.py文件里定义__all__指定包下哪些模块可以导入，有时问题得到解决.
 ```
 __all__ = ['md1', 'md2']
 ```
 
-3 只要导入就会从上到下执行各个包的__init__.py文件
-一般__init__.py文件定义该包下的模块导入。比如a包有b,c模块
-那么a的__init__.py文件定义为from a import b,c
+3 只要导入（impor或from import）就会从上到下执行各个包的__init__.py文件，一般__init__.py文件定义该包下的模块导入. 
+比如a包有b,c模块,那么a的__init__.py文件可以定义为from a import b,c
 
