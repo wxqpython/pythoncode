@@ -35,5 +35,5 @@ __all__ = ['md1', 'md2']
 
 3 只要导入就会从上到下执行各个包的__init__.py文件
 一般__init__.py文件定义该包下的模块导入。比如a包有b,c模块
-那么a的__init__.py文件定义为from a imprt b,c
+那么a的__init__.py文件定义为from a import b,c
 
