@@ -49,3 +49,5 @@ __all__ = ['c',] # 在这种情况下__all__有着from app01.a.b import c 相同
 3 只要导入（impor或from import）就会从上到下执行各个包的__init__.py文件，一般__init__.py文件定义该包下的模块导入. 
 比如a包有b,c模块,那么a的__init__.py文件可以定义为from a import b,c
 
+## 总结
+在大多数情况下都需要在各个包__init__.py下定义from xx import xx来初始化包路径
