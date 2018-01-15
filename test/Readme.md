@@ -51,3 +51,42 @@ __all__ = ['c',] # 在这种情况下__all__有着from app01.a.b import c 相同
 
 ## 总结
 在大多数情况下都需要在各个包__init__.py下定义from xx import xx来初始化包路径
+
+
+```
+def func():
+    pass
+
+x=func
+import types
+a=isinstance(x,types.FunctionType)
+print(a)  # 判断一个字符串是不是函数
+```
+
+```
+class Foo():
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+obj = Foo("wxq",18)
+x="name"
+
+a=getattr(obj,x, "NotFound") # 通过字符串获取属性(反射)
+print(a)
+```
+
+```
+class A():
+    def func1(self):
+        return self.func2()
+
+    def func2(self):
+        print("A.func2")
+
+class B(A):
+    def func2(self):
+        print("B.func2")
+
+obj=B()
+obj.func1()   # 这里打印"B.func2",也就是说先从调用对象找起
+```
