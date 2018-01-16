@@ -164,44 +164,7 @@ print(r2.text)
 a speech on biology
 For infomation on how to use them.
 
-Django中间件学习
- This document explains all middleware components that come with Django.
- For information on how to use them and how to write your own middleware, see the middleware usage guide.
- Middleware is a framework of hooks into Django’s request/response processing.
- It’s a light, low-level “plugin” system for globally altering Django’s input or output.
- 
- 
- Django 中间件是一个钩进request/response处理过程的框架，轻量且较为底层的插件系统，全局改变Django输入输出。
 
-Django默认中间件
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-在Django中就表现为一个类.
-
-m1.process_exception(self, request, exception):
-    print("m1.process_exception1")
-
-m1.process_request
-m2.process_request
-m1.process_view
-m2.process_view
-views.py
-m2.process_exception
-m1.process_exception
-m2.process_response
-m1.process_response
-
-process_request  process_view process_exception process_response
-process_request  process_view process_exception process_response
-process_request  process_view process_exception process_response
-process_request  process_view process_exception process_response
 
 
  信号：
