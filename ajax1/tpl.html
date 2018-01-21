@@ -1,5 +1,21 @@
-ul>
-    {% for user in user_list %}
-            <li>{{ user.username }}</li>
-    {% endfor %}
-</ul>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>部门</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for row in data_list %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.username }}</td>
+                <td>{{ row.password }}</td>
+                <td>{{ row.dp.title }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
