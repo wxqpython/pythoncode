@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/plugin/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <style>
+        #tpl{
+            width: 700px;
+            height: 500px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-<script src="/static/jquery-1.12.4.js"></script>
-
-<div id="tpl"></div>
-<script>
-    $(function () {
-        $.ajax({
-            url:"/get_data",
-            type:"GET",
-            success: function (data) {
-                //console.log(data)
-                $("#tpl").append(data)
-            }
+    <h1>index.html page</h1>
+    <div id="tpl"></div>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"/get_data",
+                type:'get',
+                success:function (arg) {
+                    $("#tpl").append(arg)
+                }
+            })
         })
-    })
-</script>
-
+    </script>
 </body>
 </html>
