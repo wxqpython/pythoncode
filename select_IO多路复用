@@ -1,0 +1,54 @@
+import select
+import socket
+
+def process_data(client):
+    data = bytes()
+    while True:
+        try:
+            chunk = client.recv(1024)
+        except Exception as e:
+            chunk = None
+        if not chunk:
+            break
+        data += chunk
+    data_str = str(data, encoding="utf-8")
+    header,body = data_str.split('\r\n\r\n',1)
+    header_list = header.split('\r\n',1)
+    header_dict = {}
+    for line in header_list:
+        value = line.split(':', 1)
+        if len(value) == 2:
+            k, v = value
+            header_dict[k] = v
+        else:
+            header_method, header_url, header_protocal = line.split(" ")
+            header_dict["header_method"] = header_method
+            header_dict["header_url"] = header_url
+            header_dict["header_protocal"] = header_protocal
+
+    return header_dict,body
+
+sock = socket.socket()
+sock.setblocking(False)                     # setblocking表示是否设置为阻塞模式,这里是对accept生效
+sock.bind(('127.0.0.1',8008))
+sock.listen(5)
+
+# while True:
+#     conn,addr = sock.accept()             # setblocking(False)后不阻塞了，有连接就拿连接，没有连接就直接报错
+#     conn.setblocking(False)
+#     conn.recv(1024)                       # 有数据拿数据，没有数据就直接报错
+inputs = [sock,]
+while True:
+    rList,wList,eList = select.select(inputs,[],[],0.05)
+    for client in rList:
+        if client == sock:  # 建立新的连接
+            conn,addr = client.accept()
+            conn.setblocking(False)         # 有数据拿数据，没有数据就直接报错
+            inputs.append(conn)
+        else:
+            header_dict,body=process_data(client)
+            request_url=header_dict['header_url']
+            client.send(b'HTTP/1.1 200 OK\r\n\r\n')
+            client.send(request_url.encode("utf-8"))
+            inputs.remove(client)
+            client.close()
