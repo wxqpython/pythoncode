@@ -49,11 +49,44 @@ __all__ = ['c',] # 在这种情况下__all__有着from app01.a.b import c 相同
 3 只要导入（impor或from import）就会从上到下执行各个包的__init__.py文件，一般__init__.py文件定义该包下的模块导入. 
 比如a包有b,c模块,那么a的__init__.py文件可以定义为from a import b,c
 
+4  看一个简单示例
+
+lib/conf/global_settings.py
+```
+NAME = 'wxq'
+ENGINE = 'engine.get_session'
+xxx = 'xxxx4'
+```
+
+lib/conf/__init__.py
+```
+# from . import global_settings
+from  .global_settings import xxx
+
+class Settings():
+    def __init__(self):
+        for item in dir(global_settings):
+            if item.isupper():
+                item_value=getattr(global_settings,item)
+                print(item_value)
+
+settings = Settings()
+```
+
+test.py
+```
+# from lib.conf import settings
+from lib.conf import xxx
+print(xxx)
+```
+
 ## 总结
 在大多数情况下都需要在各个包__init__.py下定义from xx import xx来初始化包路径
 
 ## 迭代器、生成器、for循环
+
 最通俗易懂的说一下：
+
 迭代器： 具有next()方法的就是迭代器
 生成器： yield返回并且有next()方法，说明生成器也是一种迭代器，一种特殊的迭代器
 for循环：一种可迭代对象，一个类具有可迭代就要有iter()方法。 
