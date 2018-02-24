@@ -114,7 +114,7 @@ def task():
     client.setblocking(False)
     try:
         client.connect(('127.0.0.1',9988))
-    except Exception as e:
+    except BlockingIOError as e:
         pass
     inputs = []
     conn_inputs = [client,]
