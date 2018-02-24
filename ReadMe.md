@@ -68,9 +68,38 @@ while True:
     print("server response:",ret)
 ```
 
-或者编写异步socket客户端
+或者编写异步socket客户端,批量发送请求
 ```
-d
+import socket,time,select
+
+def task():
+    client = socket.socket()
+    client.setblocking(False)
+    try:
+        client.connect(('127.0.0.1',9988))
+    except Exception as e:
+        pass
+    inputs = []
+    conn_inputs = [client,]
+    while True:
+        r,w,e=select.select(inputs,conn_inputs,[],0.05)
+        for obj in w: # 连接成功
+            v = "xxxttt"
+            obj.sendall(v.encode())
+            conn_inputs.remove(obj)
+            inputs.append(obj)
+
+        for obj in r: #  有数据来了
+            data=obj.recv(4096)
+            print(data)
+            obj.close()
+            inputs.remove(obj)
+
+        if not inputs:
+            break
+
+for i in range(10):
+    task()
 ```
 
 
