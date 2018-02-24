@@ -1,7 +1,7 @@
 
 ## 异步非阻塞
 
-普通阻塞式socket 服务端
+普通阻塞式socket 服务端示例
 ```
 import socket
 import time
@@ -21,7 +21,7 @@ while True:
     client.close()
 ```
 
-非阻塞式socket服务端
+非阻塞式socket服务端示例
 ```
 import socket,select,time
 
@@ -52,9 +52,46 @@ while True:
             conn.close()
 ```
 
-socket客户端批量并发请求(异步)验证socket服务端能否异步非阻塞式处理请求
+非阻塞式socket服务端示例的改进版
+```
+import socket,select,time
 
-socket_client01.py 多运行几个socket_client也可模拟
+sock = socket.socket()
+sock.setblocking(False)
+sock.bind(('127.0.0.1',9988))
+sock.listen(10)
+
+inputs = [sock,]
+conn_inputs=[]
+while True:
+    r,w,e=select.select(inputs,conn_inputs,[],0.05)
+
+    for conn in r:
+        if conn == sock:
+            client,addr = sock.accept()
+            client.setblocking(False)
+            inputs.append(client)
+        else:
+            try:
+                data = conn.recv(4096)
+            except Exception as e:
+                data = ""
+            print(data)
+            if data:
+                conn_inputs.append(conn)
+                inputs.remove(conn)
+            else:
+                conn_inputs.remove(conn)
+                inputs.remove(conn)
+                conn.close()
+    for obj in w:
+        obj.sendall(b'/ HTTP/1.1 200 OK\r\nHost: 127.0.0.1\r\n\r\nwwwwx4')
+        conn_inputs.remove(obj)
+```
+
+再来编写socket客户端，让客户端批量并发请求(异步)验证socket服务端能否异步非阻塞式处理请求
+
+socket_client01.py示例，多运行几次socket_client也可模拟多个请求
 ```
 import socket
 
@@ -68,7 +105,7 @@ while True:
     print("server response:",ret)
 ```
 
-或者编写异步socket客户端,批量发送请求
+或者编写非阻塞式socket客户端,批量发送请求
 ```
 import socket,time,select
 
