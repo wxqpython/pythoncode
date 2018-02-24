@@ -54,7 +54,7 @@ while True:
 
 socket客户端批量并发请求(异步)验证socket服务端能否异步非阻塞式处理请求
 
-# socket_client01.py 多运行几个socket_client也可模拟
+socket_client01.py 多运行几个socket_client也可模拟
 ```
 import socket
 
