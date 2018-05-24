@@ -49,7 +49,7 @@ obj = BeautifulSoup(r1.text,'html.parser')
 tag_a = obj.find_all(name='a',text=rep)
 
 for i in tag_a:
-    half_pk = i.text
+    half_pk = i.attrs.get('href')  # 取属性才对
     full_url = url + half_pk + "\n"
     download(full_url,half_pk)
     
