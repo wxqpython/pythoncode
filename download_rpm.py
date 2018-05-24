@@ -1,4 +1,6 @@
-# 没有找到正确批量下载rp包的命令，自己写了一个包列表，可以基于这个包列表批量wget包
+# 没有找到正确批量下载rp包的命令，自己写了一段代码实现
+
+# 方法一：   自己写了一个包列表，可以基于这个包列表批量wget
 
 # download_rpm.py
 import requests
@@ -21,3 +23,34 @@ for i in tag_a:
     pk = url + half_pk + "\n"
     f.write(pk)
 f.close()
+
+
+# 方法二：requests完全实现下载
+
+import requests
+import re,os
+from bs4 import BeautifulSoup
+
+def download(full_url,half_pk):
+    import requests
+    resource = requests.get(url=full_url, stream=True)
+    if os.path.exists(half_pk):
+        os.remove(half_pk)
+    with open(half_pk, mode="wb") as f:
+       for chunk in resource.iter_content(chunk_size=10240): # 10KB
+           f.write(chunk)
+    return None
+
+url = 'http://mirrors.163.com/centos/7.4.1708/os/x86_64/Packages/'
+rep = re.compile('^\w')
+r1 = requests.get(url=url,)
+
+obj = BeautifulSoup(r1.text,'html.parser')
+tag_a = obj.find_all(name='a',text=rep)
+
+for i in tag_a:
+    half_pk = i.text
+    full_url = url + half_pk + "\n"
+    download(full_url,half_pk)
+    
+    
