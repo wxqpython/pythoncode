@@ -50,7 +50,7 @@ tag_a = obj.find_all(name='a',text=rep)
 
 for i in tag_a:
     half_pk = i.attrs.get('href')  # 取属性才对
-    full_url = url + half_pk + "\n"
+    full_url = url + half_pk
     download(full_url,half_pk)
     
 # 有一些想法，想对上面代码优化，然后代码就这样了
@@ -79,8 +79,8 @@ def getall_tag_a():
         yield x
 
 for a in getall_tag_a():
-    half_pk = a.text
-    full_url = url + half_pk + "\n"
+    half_pk = a.attrs.get('href')  # 取属性才对
+    full_url = url + half_pk
     download(full_url,half_pk)
     
     
