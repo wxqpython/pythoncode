@@ -2,6 +2,14 @@
 
 ## 基础
 
+写接口方法：
+
+1 可以基于FBV if request.method 不同做不同的代码逻辑处理
+
+2 可以基于原生CBV 根据request.method不同自动执行不同的方法
+
+3 那就用restframework框架来写接口
+
 ```
 pip3 install djangorestframework
 ```
